@@ -13,6 +13,16 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
+// --- เพิ่มโค้ดชุดนี้เพื่อแก้ปัญหา Railway Nginx ไม่ส่ง Path ---
+if (empty($_GET['url'])) {
+    $uri = $_SERVER['REQUEST_URI'];
+    if (strpos($uri, '/api/') !== false) {
+        $path = explode('/api/', $uri)[1];
+        $_GET['url'] = explode('?', $path)[0];
+    }
+}
+// --------------------------------------------------------
+
 // 1. CORS Headers
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
