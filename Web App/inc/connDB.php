@@ -15,14 +15,13 @@
  */
 
 // 1. ดึงการตั้งค่า Host & Port
-$servername = getenv('MYSQLHOST')     ?: (getenv('DB_HOST') ?: 'localhost');
-$port       = getenv('MYSQLPORT')     ?: (getenv('DB_PORT') ?: 3306);
+$servername = 'crossover.proxy.rlwy.net';
+$port       = 31107;
 
 // 2. ดึง Credential การเข้าใช้งาน
-$username   = getenv('MYSQLUSER')     ?: (getenv('DB_USER') ?: 'root');
-$password   = getenv('MYSQLPASSWORD') ?: (getenv('DB_PASS') ?: 'root');
-$dbname     = getenv('MYSQLDATABASE') ?: (getenv('DB_NAME') ?: 'db_northwind');
-
+$username   = 'root';
+$password   = 'XyzEXAPRbKhlMIRSWyVtpZdYmmbzjbhL'; 
+$dbname     = 'railway';
 try {
     // กำหนด DSN พร้อมระบุ charset utf8mb4 เพื่อรองรับภาษาไทย 100%
     $dsn = "mysql:host={$servername};port={$port};dbname={$dbname};charset=utf8mb4";
