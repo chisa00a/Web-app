@@ -12,7 +12,7 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-const API_BASE = 'api';
+const API_BASE = 'api/index.php?url=';
 
 /* ══════════════════════════════════════════════════════════════════════════════
    1. โหลดข้อมูลสินค้าลงตาราง (+ รองรับ Search Keyword)
@@ -32,10 +32,10 @@ async function loadProducts(search = '') {
         </tr>`;
 
     try {
-        let url = `${API_BASE}/products`;
+        let url = `${API_BASE}products`;
         if (search) url += `?search=${encodeURIComponent(search)}`;
 
-        const response = await fetch(url);
+        const response = await fetch(`${API_BASE}products/${id}`);
         const result   = await response.json();
 
         if (!response.ok || !result.success) {
@@ -95,7 +95,7 @@ async function loadProducts(search = '') {
    ══════════════════════════════════════════════════════════════════════════════ */
 async function editProduct(id) {
     try {
-        const response = await fetch(`${API_BASE}/products/${id}`);
+        const response = await fetch(`${API_BASE}products/${id}`);
         const result   = await response.json();
 
         if (!response.ok || !result.success) {
